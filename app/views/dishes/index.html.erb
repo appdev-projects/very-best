@@ -89,6 +89,7 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Name</th>
+        <th>Is at...</th>
         <th>Cuisine</th>
         <th>Actions</th>
       </tr>
@@ -96,6 +97,31 @@
       <% @dishes.each do |dish| %>
       <tr>
         <td><a href="/dishes/<%= dish.id %>"><%= dish.name %></a></td>
+
+        <td>
+          
+           <form action="/create_bookmark" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+        <input type="hidden" name="dish_id" value="<%= dish.id %>">
+
+      <!-- Label and input for venue_id -->
+      <div class="form-group">
+        <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <button class="btn btn-success">
+        Create Bookmark
+      </button>
+    </form>
+          
+        </td>
+
         <td>
           <% if dish.cuisine.present? %>
             <a href="/cuisines/<%= dish.cuisine.id %>">
