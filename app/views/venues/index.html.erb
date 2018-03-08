@@ -101,10 +101,9 @@
         <th>Neighborhood</th>
         <th>Actions</th>
       </tr>
-     
+<!--# We worked on the code here!-->
      <% bookmarks = Bookmark.where({ :user_id => current_user.id }) %>
      
-<!--# We need to work on the code here!-->
       <% bookmarks.each do |bookmark| %>
       <tr>
         <td><%= Venue.find_by({:id=>bookmark.venue_id}).name %></td>
