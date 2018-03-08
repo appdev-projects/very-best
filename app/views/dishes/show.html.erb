@@ -6,7 +6,6 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
 
-      <dt>Cuisine</dt>
       <dd>
         <% if @dish.cuisine.present? %>
           <a href="/cuisines/<%= @dish.cuisine_id %>">
@@ -16,18 +15,6 @@
       </dd>
 
     </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/dishes" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/dishes/<%= @dish.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_dish/<%= @dish.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
   </div>
 </div>
 
@@ -66,6 +53,17 @@
   </div>
 </div>
 
+
+
+<ul>
+      <% @bookmarks.each do |bookmark| %>
+        <li><a href="/venues/<%= Venue.find(bookmark.venue_id).id %>">
+        <%= Venue.find(bookmark.venue_id).name %></a>
+        </li>
+      <% end %>
+  </ul>
+
+
 <!-- A Dish has many specialists(Bookmarks) -->
 
 <div class="row">
@@ -92,3 +90,4 @@
     </ul>
   </div>
 </div>
+
