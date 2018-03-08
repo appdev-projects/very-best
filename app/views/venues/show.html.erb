@@ -46,13 +46,13 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Bookmarks
+        Dishes you loved here
       </li>
 
       <% @venue.bookmarks.each do |bookmark| %>
         <li class="list-group-item">
           <a href="/bookmarks/<%= bookmark.id %>">
-            <%= bookmark.notes %>
+            <%= Dish.find_by({:id=>bookmark.dish_id}).name %>
           </a>
           <div class="btn-group btn-group-xs float-right">
             <a href="/bookmarks/<%= bookmark.id %>" class="btn btn-primary">
