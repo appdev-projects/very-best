@@ -53,9 +53,6 @@
   </div>
 </div>
 
-<<<<<<< HEAD
-
-
 <ul>
       <% @bookmarks.each do |bookmark| %>
         <li><a href="/venues/<%= Venue.find(bookmark.venue_id).id %>">
@@ -63,24 +60,3 @@
         </li>
       <% end %>
   </ul>
-
-
-<!-- A Dish has many specialists(Bookmarks) -->
-=======
->>>>>>> 2031480e3bd7176c7333f91d812d08d485d19af7
-
-
-<p>
-      <% @bookmarks.each do |bookmark| %>
-        <a href="/venues/<%= Venue.find(bookmark.venue_id).id %>">
-        <%= Venue.find(bookmark.venue_id).name %></a>
-      <% end %>
-<<<<<<< HEAD
-    </ul>
-  </div>
-</div>
-=======
-</p>
-
->>>>>>> 2031480e3bd7176c7333f91d812d08d485d19af7
-
