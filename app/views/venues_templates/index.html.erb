@@ -1,61 +1,28 @@
 <div class="page-header">
-  <h1>
-    Venues
-    <a href="/venues/new" class="btn btn-lg btn-success">New Venue</a>
+    <h1>
+Places You've Bookmarked
+    <a href="/venues/new" class="btn btn-lg btn-success">Add a new venue</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "venues_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
-        <div class="form-group">
+      <div class="form-group">
     <%= f.label :name_cont, "Name contains" %>
     <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
   </div>
-
-
-
-      
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-        <div class="form-group">
-      <%= f.label :bookmarks_notes_cont, "Bookmark notes contains" %>
-      <%= f.text_field :bookmarks_notes_cont, :class => "form-control", :placeholder => "Bookmark notes contains" %>
+  
+<div class="form-group">
+          <%= f.label :specialties_name_cont, "Bookmarked dish name contains" %>
+      <%= f.text_field :specialties_name_cont, :class => "form-control", :placeholder => "Bookmarked dish name contains" %>
+   
     </div>
 
 <div class="form-group">
       <%= f.label :neighborhood_name_cont, "Neighborhood name contains" %>
       <%= f.text_field :neighborhood_name_cont, :class => "form-control", :placeholder => "Neighborhood name contains" %>
     </div>
-
-<div class="form-group">
-      <%= f.label :fans_username_cont, "User username contains" %>
-      <%= f.text_field :fans_username_cont, :class => "form-control", :placeholder => "User username contains" %>
-    </div>
-
-<div class="form-group">
-      <%= f.label :specialties_name_cont, "Dish name contains" %>
-      <%= f.text_field :specialties_name_cont, :class => "form-control", :placeholder => "Dish name contains" %>
-    </div>
-
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/venues" class="btn btn-secondary btn-block mb-1">Clear filters</a>
@@ -85,7 +52,7 @@
         <th>Actions</th>
       </tr>
 
-      <% @venues.each do |venue| %>
+      <% @bookmarkedvenues.each do |venue| %>
       <tr>
         <td><%= venue.name %></td>
         <td><%= venue.address %></td>
@@ -104,7 +71,7 @@
       </tr>
       <% end %>
     </table>
-    <%= paginate @venues, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @bookmarkedvenues, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
 
